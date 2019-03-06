@@ -219,5 +219,27 @@ app.post('/home/pick_color', function(req, res) {
     });
 });
 
+app.get('/player_info', function(req, res)
+{
+  var fb_players = 'select id, name from football_players;';
+  db.any(fb_players)
+        .then(function (rows) {
+            res.render('pages/player_info',{
+        my_title: "Player Info",
+        data: rows,
+      })
+
+        })
+        .catch(function (err) {
+            // display error message in case an error
+            request.flash('error', err);
+            response.render('pages/player_info', {
+                title: 'Player Info',
+                data: '',
+            })
+        })
+
+});
+
 app.listen(3000);
 console.log('http://localhost:3000 is the magic port');

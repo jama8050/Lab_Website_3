@@ -18,6 +18,15 @@
 							 <!-- TODO: Populate our select with player options
 							 			For each player, set a new option with a value matching the palyer's id, 
 							 			but will display the player's name-->
+
+							 			<% if (data){
+							 				var playerData = '';
+							 				data.forEach(function(item){
+							 				playerData += '<option value="' + item.id + '">' + item.name + '</option>';
+							 				}); %>
+							 				<%- playerData -%>
+							 			<% } %>
+
 						</select>
 					</form>
 				  </div>
